@@ -16,4 +16,6 @@ export const StyledH2 = styled.h2`
 
 export const Wrapper = styled.div`
   display: inline-block;
+  margin-right: 16px;
+  margin-left: 16px;
 `;
