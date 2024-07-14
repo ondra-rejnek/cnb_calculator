@@ -1,4 +1,6 @@
-const parseReadableStream = async (stream: ReadableStream): Promise<string> => {
+export const parseReadableStream = async (
+  stream: ReadableStream
+): Promise<string> => {
   const reader = stream.getReader();
   const decoder = new TextDecoder();
   let result = "";

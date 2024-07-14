@@ -8,6 +8,7 @@ import SelectField from "../SelectField";
 import ResultDisplay from "./ResultDisplay";
 import { ExchangeRates } from "../../types/exchangeRate";
 import { calculateAmountInCurrency } from "../../utils/calculateAmountInCurrency";
+import { toast } from "react-toastify";
 
 interface Props {
   exchangeRates: ExchangeRates;
@@ -25,11 +26,17 @@ const ExchangeForm: FC<Props> = ({ exchangeRates }) => {
 
   const onSubmit = ({ amountCzk, code }: FormFields) => {
     const exchangeRate = exchangeRates[code];
-    const calculationResult = calculateAmountInCurrency(
-      amountCzk,
-      exchangeRate
-    );
-    setResult(calculationResult);
+    try {
+      const calculationResult = calculateAmountInCurrency(
+        amountCzk,
+        exchangeRate
+      );
+      setResult(calculationResult);
+    } catch (e) {
+      if (e instanceof Error) {
+        toast(e.message, { type: "error" });
+      }
+    }
   };
 
   const memoisedOptions = useMemo(
