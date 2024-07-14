@@ -7,8 +7,6 @@ import { BtnWrapper, Container } from "./styles";
 import SelectField from "../SelectField";
 import ResultDisplay from "./ResultDisplay";
 import { ExchangeRates } from "../../types/exchangeRate";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schema } from "./schema";
 import { calculateAmountInCurrency } from "../../utils/calculateAmountInCurrency";
 
 interface Props {
@@ -19,7 +17,6 @@ const ExchangeForm: FC<Props> = ({ exchangeRates }) => {
   const [result, setResult] = useState<string>();
   const { register, handleSubmit, watch } = useForm<FormFields>({
     defaultValues: { amountCzk: 1.0, code: undefined },
-    resolver: yupResolver(schema),
   });
 
   const onChange = () => {
@@ -47,34 +44,32 @@ const ExchangeForm: FC<Props> = ({ exchangeRates }) => {
   const watchedCurrency = watch("code");
 
   return (
-    <>
-      <form onChange={onChange} onSubmit={handleSubmit(onSubmit)}>
-        <Container>
-          <InputField
-            label="Amount in CZK"
-            required
-            step="0.01"
-            min="0"
-            type="number"
-            {...register("amountCzk")}
-          />
-          <SelectField
-            options={memoisedOptions}
-            label="Currency"
-            {...register("code")}
-          />
-          <BtnWrapper>
-            <Button type="submit">Convert</Button>
-          </BtnWrapper>
-        </Container>
-        {result && (
-          <ResultDisplay
-            amount={watchedAmount.toString()}
-            resultValue={`${result} ${watchedCurrency}`}
-          />
-        )}
-      </form>
-    </>
+    <form onChange={onChange} onSubmit={handleSubmit(onSubmit)}>
+      <Container>
+        <InputField
+          label="Amount in CZK"
+          required
+          step="0.01"
+          min="0"
+          type="number"
+          {...register("amountCzk")}
+        />
+        <SelectField
+          options={memoisedOptions}
+          label="Currency"
+          {...register("code")}
+        />
+        <BtnWrapper>
+          <Button type="submit">Convert</Button>
+        </BtnWrapper>
+      </Container>
+      {result && (
+        <ResultDisplay
+          amount={watchedAmount.toString()}
+          resultValue={`${result} ${watchedCurrency}`}
+        />
+      )}
+    </form>
   );
 };
 
