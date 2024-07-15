@@ -4,7 +4,7 @@ import { parseExchangeRatesData } from "../../utils/parseExchangeRates";
 import { toast } from "react-toastify";
 
 const CNB_DATA_URL =
-  "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt";
+  "https://shrouded-woodland-96909-d7c6f5cc6292.herokuapp.com/api";
 
 export const useFetchCNBExchangeRates = () =>
   useQuery({
