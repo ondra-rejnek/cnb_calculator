@@ -10,7 +10,13 @@ const InputField: FC<Props> = forwardRef<HTMLInputElement, Props>(
     return (
       <InputGroup>
         <StyledLabel htmlFor={name}>{label}</StyledLabel>
-        <StyledInputField ref={ref} {...restProps} id={name} name={name} />
+        <StyledInputField
+          data-testid={name}
+          ref={ref}
+          {...restProps}
+          id={name}
+          name={name}
+        />
       </InputGroup>
     );
   }

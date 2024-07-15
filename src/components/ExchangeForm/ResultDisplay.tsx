@@ -7,10 +7,10 @@ interface Props {
 
 const ResultDisplay: FC<Props> = ({ amount, resultValue }) => {
   return (
-    <>
+    <div>
       <p>{amount} CZK =</p>
-      <h3>{resultValue}</h3>
-    </>
+      <h3 data-testid={"resultDisplay"}>{resultValue}</h3>
+    </div>
   );
 };
 

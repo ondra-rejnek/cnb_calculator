@@ -12,7 +12,13 @@ const SelectField: FC<Props> = forwardRef<HTMLSelectElement, Props>(
     return (
       <InputGroup>
         <StyledLabel htmlFor={name}>{label}</StyledLabel>
-        <StyledSelectField ref={ref} {...restProps} id={name} name={name}>
+        <StyledSelectField
+          data-testid={name}
+          ref={ref}
+          {...restProps}
+          id={name}
+          name={name}
+        >
           {options.map((option, index) => (
             <option key={index} value={option.value}>
               {option.label}

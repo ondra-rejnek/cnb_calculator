@@ -67,7 +67,9 @@ const ExchangeForm: FC<Props> = ({ exchangeRates }) => {
           {...register("code")}
         />
         <BtnWrapper>
-          <Button type="submit">Convert</Button>
+          <Button data-testid={"convertBtn"} type="submit">
+            Convert
+          </Button>
         </BtnWrapper>
       </Container>
       {result && (
