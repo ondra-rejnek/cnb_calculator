@@ -8,14 +8,6 @@ import { PRIMARY_COLOR } from "../../globalStyles";
 const AppWrapper = () => {
   const { data, isLoading, isFetching } = useFetchCNBExchangeRates();
 
-  // if (isLoading || isFetching) {
-  //   return <p>Fetching data...</p>;
-  // }
-
-  // if (!data) {
-  //   return <p>Error fetching data</p>;
-  // }
-
   return (
     <Wrapper>
       <StyledH2>Currency Converter</StyledH2>
